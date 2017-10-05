@@ -1,0 +1,6 @@
+{
+    "require": {
+        "cache/integration-tests": "^0.16.0",
+        "phpunit/phpunit": "^6.3"
+    }
+}
