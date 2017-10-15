@@ -1,6 +1,28 @@
 {
+    "name": "imel96/simple-lcache",
+    "description": "psr-16 SimpleCache implementation",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Melby Sjamsuddin",
+            "email": "melbys@benon.com"
+        }
+    ],
+    "autoload":{
+        "psr-4":{
+            "SimpleLcache\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SimpleLcache\\": "tests/"
+        }
+    },
     "require": {
         "cache/integration-tests": "^0.16.0",
-        "phpunit/phpunit": "^6.3"
+	"lcache/lcache": "master@dev",
+        "phpunit/phpunit": "4.*",
+        "psr/simple-cache": "^1.0"
     }
 }
