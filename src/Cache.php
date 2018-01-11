@@ -4,7 +4,6 @@ namespace SimpleLcache;
 
 use DateInterval;
 use Traversable;
-use LCache\Address;
 use LCache\Integrated;
 use Psr\SimpleCache\CacheInterface;
 
@@ -33,7 +32,7 @@ class Cache implements CacheInterface
         self::validate_key($key);
         $this->synchronise();
 
-        $value = $this->lcache->get(new Address($this->bin, $key));
+        $value = $this->lcache->get($key);
         return is_null($value) ? $default : $value;
     }
 
@@ -60,7 +59,7 @@ class Cache implements CacheInterface
         } elseif ($ttl < 0) {
             return false;
         }
-        $this->lcache->set(new Address($this->bin, $key), $value, $ttl);
+        $this->lcache->set($key, $value, $ttl);
         return true;
     }
 
@@ -77,7 +76,7 @@ class Cache implements CacheInterface
     public function delete($key)
     {
         self::validate_key($key);
-        $this->lcache->delete(new Address($this->bin, $key));
+        $this->lcache->delete($key);
         return true;
     }
 
@@ -93,14 +92,14 @@ class Cache implements CacheInterface
 
     public function clear()
     {
-        $this->lcache->delete(new Address($this->bin));
-        return true;
+        $this->lcache->delete('*');
+	return true;
     }
 
     public function has($key)
     {
         self::validate_key($key);
-        return $this->lcache->exists(new Address($this->bin, $key));
+        return $this->lcache->exists($key);
     }
 
     protected function synchronise()

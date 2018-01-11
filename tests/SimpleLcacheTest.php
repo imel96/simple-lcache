@@ -29,7 +29,7 @@ class SimpleLcacheTest extends SimpleCacheTest
         $this->dbh = new PDO('sqlite::memory:');
         $this->createSchema();
         $l2 = new Database($this->dbh);
-        return self::create_lcache('APCu', $l2, 'first_pool', self::TTL);
+        return self::create_lcache('Static', $l2, 'first_pool', self::TTL);
     }
 
     protected static function create_lcache(string $l1_driver, L2 $l2, string $pool, $ttl): CacheInterface
