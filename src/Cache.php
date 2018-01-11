@@ -4,7 +4,6 @@ namespace SimpleLcache;
 
 use DateInterval;
 use Traversable;
-use InvalidArgumentCacheException;
 use LCache\Address;
 use LCache\Integrated;
 use Psr\SimpleCache\CacheInterface;
