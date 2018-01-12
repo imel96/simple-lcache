@@ -59,7 +59,9 @@ class Cache implements CacheInterface
         } elseif ($ttl < 0) {
             return false;
         }
-        $this->lcache->set($key, $value, $ttl);
+        if ($this->lcache->set($key, $value, $ttl) === false) {
+            return false;
+        }
         return true;
     }
 
